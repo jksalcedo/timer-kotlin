@@ -1,4 +1,5 @@
 # Timer Library
+![Kotlin](https://img.shields.io/badge/kotlin-%237F52FF.svg?style=flat&logo=kotlin&logoColor=white) [![](https://jitpack.io/v/jksalcedo/timer-kotlin.svg)](https://jitpack.io/#jksalcedo/timer-kotlin) 
 
 The Timer library provides robust and flexible CountdownTimer and Stopwatch functionalities implemented using Kotlin Coroutines Flow. It's ideal for applications requiring precise time management, such as quiz apps, workout trackers, or game timers.
 
