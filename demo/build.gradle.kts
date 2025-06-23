@@ -4,11 +4,11 @@ plugins {
 }
 
 android {
-    namespace = "com.jksalcedo.timer"
+    namespace = "com.jksalcedo.timerkotlin"
     compileSdk = 36
 
     defaultConfig {
-        applicationId = "com.jksalcedo.timerutils"
+        applicationId = "com.jksalcedo.timerkotlin"
         minSdk = 21
         targetSdk = 36
         versionCode = 1
@@ -43,8 +43,7 @@ dependencies {
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
-
-    implementation(project(":timer"))
+    implementation(project(":timer-kotlin"))
 
     // Android KTX, Lifecycle, and Coroutines for ViewModel integration
     implementation(libs.androidx.core.ktx)

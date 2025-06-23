@@ -21,4 +21,4 @@ dependencyResolutionManagement {
 
 rootProject.name = "TimerUtils"
 include(":demo")
-include(":timer")
+include(":timer-kotlin")

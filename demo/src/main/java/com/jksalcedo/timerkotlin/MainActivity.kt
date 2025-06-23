@@ -1,4 +1,4 @@
-package com.jksalcedo.timer
+package com.jksalcedo.timerkotlin
 
 import android.os.Bundle
 import android.widget.Button

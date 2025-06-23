@@ -1,4 +1,4 @@
-package com.jksalcedo.timer
+package com.jksalcedo.timerkotlin
 
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Job
