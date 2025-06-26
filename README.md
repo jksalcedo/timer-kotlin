@@ -27,6 +27,30 @@ Start, pause, stop, and reset functionalities.
 
 High Precision: Uses kotlin.time.Duration and kotlin.time.TimeSource.Monotonic for accurate time tracking, even with millisecond precision.
 
+## API
+
+| Function / Class                      | Description                                                                 | Parameters                                      | Returns                 |
+|---------------------------------------|-----------------------------------------------------------------------------|-------------------------------------------------|-------------------------|
+| **`CountdownTimer`**                  | A versatile countdown timer that can be started, paused, resumed, and stopped. Time updates are provided via a `StateFlow`. | `coroutineScope: CoroutineScope`, `tickInterval: Duration = 1.seconds` | —                       |
+| - `remainingTime: StateFlow<Duration>`| A `StateFlow` representing the time remaining on the countdown timer. Emits `Duration.ZERO` when inactive or finished. | —                                               | `StateFlow<Duration>`   |
+| - `isRunning: StateFlow<Boolean>`     | A `StateFlow` indicating whether the countdown timer is currently running.   | —                                               | `StateFlow<Boolean>`    |
+| - `start(duration: Duration)`         | Starts the countdown timer from the specified duration. Restarts if already running. | `duration: Duration` (must be positive)         | `Unit`                  |
+| - `pause()`                           | Pauses the countdown timer, preserving the remaining time. No effect if already paused. | —                                               | `Unit`                  |
+| - `resume()`                          | Resumes the countdown timer from its current `remainingTime`. No effect if running or no time remains. | —                                               | `Unit`                  |
+| - `stop()`                            | Stops the countdown timer and resets `remainingTime` to `Duration.ZERO`. No effect if not running. | —                                               | `Unit`                  |
+| - `restart()`                         | Restarts the timer from its initial duration. No effect if no initial duration set. | —                                               | `Unit`                  |
+| **`Stopwatch`**                       | A versatile stopwatch that can track elapsed time, individual lap deltas, and total time splits. | `coroutineScope: CoroutineScope`, `tickInterval: Duration = 100.milliseconds`, `timeSource: TimeSource = TimeSource.Monotonic` | —                       |
+| - `elapsedTime: StateFlow<Duration>`  | A `StateFlow` representing the total elapsed time of the stopwatch.          | —                                               | `StateFlow<Duration>`   |
+| - `isRunning: StateFlow<Boolean>`     | A `StateFlow` indicating whether the stopwatch is currently running.         | —                                               | `StateFlow<Boolean>`    |
+| - `lapTimes: StateFlow<List<Duration>>`| A list of individual lap durations (time between each lap press).            | —                                               | `StateFlow<List<Duration>>` |
+| - `splitTimes: StateFlow<List<Duration>>` | A list of total elapsed times recorded at each split press.                 | —                                               | `StateFlow<List<Duration>>` |
+| - `start()`                           | Starts or resumes the stopwatch. No effect if already running.               | —                                               | `Unit`                  |
+| - `pause()`                           | Pauses the stopwatch. No effect if already paused.                           | —                                               | `Unit`                  |
+| - `stop()`                            | Stops and resets the stopwatch completely.                                   | —                                               | `Unit`                  |
+| - `lap()`                             | Records a lap time (duration since the last lap). No effect if not running.  | —                                               | `Unit`                  |
+| - `split()`                           | Records a split time (total elapsed time at the moment). No effect if not running. | —                                               | `Unit`                  |
+| - `reset()`                           | Resets the stopwatch to zero. Continues running if it was running.           | —                                               | `Unit`                  |
+
 ## Installation
 
 Add the JitPack repository to your project's root build.gradle.kts (or build.gradle):
@@ -413,3 +437,14 @@ tools:context=".MainActivity">
 
 </LinearLayout>
 ```
+
+## Contributing
+
+Contributions are welcome! To contribute:
+
+1. Fork the repository.
+2. Create a new branch for your feature or bugfix.
+3. Make your changes and add tests if needed.
+4. Open a pull request with a clear description of your changes.
+
+Please follow the existing code style and conventions.
